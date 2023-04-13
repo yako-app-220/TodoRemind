@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    //realm
+    id 'kotlin-kapt'
+    id 'realm-android'
 }
 
 android {
@@ -14,6 +17,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures{
+        viewBinding=true
     }
 
     buildTypes {
@@ -32,6 +39,18 @@ android {
 }
 
 dependencies {
+
+    //BottomNavigation
+    implementation "com.google.android.material:material:1.1.0-alpha06"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    // Navigationを使うため
+    def nav_version = '2.0.0'
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    //https://qiita.com/orimomo/items/313ce4e273fa741dddf2
+
+    //realm adapter
+    implementation"io.realm:android-adapters:4.0.0"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'

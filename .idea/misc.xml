@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind2/app/src/main/res/layout/activity_main.xml" value="0.13903985507246377" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind2/app/src/main/res/layout/cell_todo_item.xml" value="0.1671875" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind2/app/src/main/res/layout/cell_todoi_tem_list.xml" value="0.1671875" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind2/app/src/main/res/layout/fragment_action.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind2/app/src/main/res/layout/fragment_maker.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind2/app/src/main/res/layout/fragment_play.xml" value="0.18" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind2/app/src/main/res/layout/fragment_play_list.xml" value="0.15" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind2/app/src/main/res/layout/fragment_stock.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind2/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.16302083333333334" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
