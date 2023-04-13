@@ -1,5 +1,6 @@
 package com.yako.todoreminder
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.yako.todoreminder.databinding.FragmentStockBinding
 import io.realm.Realm
 import io.realm.kotlin.where
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,6 +49,10 @@ class StockFragment : Fragment() {
         val toDoItem=realm.where<ToDoItem>().findAll()
         val adapter=ToDoAdapter(toDoItem)
         binding.list.adapter=adapter
+
+        binding.addFab.setOnClickListener {
+            (activity as? MainActivity)?.startToDoActivity(0L)
+        }
 
     }
 

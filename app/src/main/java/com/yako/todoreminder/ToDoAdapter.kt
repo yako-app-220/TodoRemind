@@ -29,7 +29,7 @@ class ToDoAdapter (data:OrderedRealmCollection<ToDoItem>):
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val toDoItem:ToDoItem?=getItem(position)
-        holder.date.text=DateFormat.format("yyyy/MM/dd HH:mm",toDoItem?.playDate)
+        holder.date.text=DateFormat.format("yyyy/MM/dd HH:mm",toDoItem?.doDate)
         holder.title.text=toDoItem?.name
     }
 

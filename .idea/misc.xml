@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/activity_to_do.xml" value="0.15324214792299898" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/fragment_edit_to_d_o.xml" value="0.25271739130434784" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/fragment_edit_to_do.xml" value="0.33" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/fragment_stock.xml" value="0.160081053698075" />
         <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind2/app/src/main/res/layout/activity_main.xml" value="0.13903985507246377" />
         <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind2/app/src/main/res/layout/cell_todo_item.xml" value="0.1671875" />
         <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind2/app/src/main/res/layout/cell_todoi_tem_list.xml" value="0.1671875" />

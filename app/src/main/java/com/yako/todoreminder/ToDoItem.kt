@@ -13,6 +13,11 @@ open class ToDoItem :RealmObject(){
     var tag: RealmList<String>? = null
     var why:String=""
     var memo:String=""
+
+    //statusはTodoの状況
+    //1L:Stock
+    //2L:Play
+    //3L:Old
     var status:Long=0L
     var weight:Long=0L
     var checkText: RealmList<String>? = null
@@ -21,11 +26,18 @@ open class ToDoItem :RealmObject(){
 
     var organizeDate :Date?=null
 
-    var playType :Long=0L
-    var playRemind :Long=0L
-    var playDate :Date?=null
-    var playId :Long=0L
-    var playAdd :Long=0L
+    //1L:時間指定
+    //2L:ターゲットのdo起因
+    //3L:ターゲットのlimit起因
+    //4L:ターゲットのdelete起因
+    //5L:ターゲットのtime起因
+    //6L:ターゲットのplay起因
+    //7L:ターゲットのfinish起因
+    var doType :Long=0L
+    var doRemind :Long=0L
+    var doDate :Date?=null
+    var doId :Long=0L
+    var doAdd :Long=0L
 
     var limitType :Long=0L
     var limitRemind :Long=0L

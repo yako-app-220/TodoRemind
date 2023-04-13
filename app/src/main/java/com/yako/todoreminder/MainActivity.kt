@@ -1,5 +1,6 @@
 package com.yako.todoreminder
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
@@ -17,5 +18,12 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment)
         setupWithNavController(binding.bottomNavigation,navController)
+
+    }
+
+    fun startToDoActivity(id:Long){
+        val intent = Intent(this, ToDoActivity::class.java)
+        intent.putExtra("todoId",id)
+        this.startActivity(intent)
     }
 }
