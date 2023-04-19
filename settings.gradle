@@ -10,8 +10,6 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        //realm adapter
-        jcenter()
     }
 }
 rootProject.name = "TodoReminder"

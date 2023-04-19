@@ -1,9 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    //realm
+    //room
     id 'kotlin-kapt'
-    id 'realm-android'
 }
 
 android {
@@ -49,8 +48,11 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     //https://qiita.com/orimomo/items/313ce4e273fa741dddf2
 
-    //realm adapter
-    implementation"io.realm:android-adapters:4.0.0"
+
+    // room
+    def version = "2.2.5"
+    implementation "androidx.room:room-runtime:$version"
+    kapt "androidx.room:room-compiler:$version"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'

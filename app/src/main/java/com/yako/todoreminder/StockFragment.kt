@@ -1,33 +1,17 @@
 package com.yako.todoreminder
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Room
 import com.yako.todoreminder.databinding.FragmentStockBinding
-import io.realm.Realm
-import io.realm.kotlin.where
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
 
 class StockFragment : Fragment() {
-
-    //realm
-    private lateinit var realm: Realm
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //realm
-        realm= Realm.getDefaultInstance()
-    }
 
     private val binding get() = _binding!!
     private var _binding: FragmentStockBinding? = null
@@ -39,33 +23,50 @@ class StockFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentStockBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.list.layoutManager=LinearLayoutManager(context)
-        val toDoItem=realm.where<ToDoItem>().findAll()
-        val adapter=ToDoAdapter(toDoItem)
-        binding.list.adapter=adapter
+        //roomのインスタンス生成
+        val db = Room.databaseBuilder(
+            requireContext(),
+            ToDoDatabase::class.java, "ToDo.db"
+        ).allowMainThreadQueries().build()
+
+        //Daoのインスタンス生成
+        val toDoDao = db.todoDao()
+        //roomのデータを全て取得
+        val todo: List<ToDoItem> = toDoDao.getAll()
+
+        var todoId=-1L
+        //OnClickListenerを引数としてMemoAdapterのインスタンス生成
+        val todoAdapter = ToDoAdapter(
+            OnClickListener { todo ->
+                //toEditIntent.putExtra("ID",todo.id)
+                todoId=todo.id
+            }
+        )
+
+        todoAdapter.submitList(todo)
+        binding.list.adapter = todoAdapter
+        binding.list.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        binding.list.setOnClickListener {
+            (activity as? MainActivity)?.startToDoActivity(todoId)
+        }
 
         binding.addFab.setOnClickListener {
             (activity as? MainActivity)?.startToDoActivity(0L)
         }
-
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding=null
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        //realm
-        realm.close()
-    }
-
 
 }

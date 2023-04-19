@@ -1,41 +1,50 @@
 package com.yako.todoreminder
 
-import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import io.realm.OrderedRealmCollection
-import io.realm.RealmRecyclerViewAdapter
+import com.yako.todoreminder.databinding.CellTodoItemBinding
+import com.yako.todoreminder.databinding.FragmentStockBinding
 
-class ToDoAdapter (data:OrderedRealmCollection<ToDoItem>):
-    RealmRecyclerViewAdapter<ToDoItem, ToDoAdapter.ViewHolder>(data,true) {
-
-
-    init {
-        setHasStableIds(true)
-    }
-    class ViewHolder(cell: View) : RecyclerView.ViewHolder(cell) {
-        val date : TextView=cell.findViewById(R.id.todoName)
-        val title: TextView = cell.findViewById(R.id.dateText)
+class ToDoAdapter (private val onClickListener: OnClickListener):
+    ListAdapter<ToDoItem, ToDoViewHolder>(diffUtilItemCallback) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ToDoViewHolder {
+        val view =  CellTodoItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ToDoViewHolder(view)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ToDoAdapter.ViewHolder {
-        val inflater=LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.cell_todo_item,parent,false)
-        return ViewHolder(view)
+    override fun onBindViewHolder(holder: ToDoViewHolder, position: Int) {
+        val todo = getItem(position)
+        holder.bind(todo)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(todo)
+        }
+    }
+}
+
+class ToDoViewHolder(
+    private val binding:CellTodoItemBinding
+) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(todo: ToDoItem) {
+        binding.todoName.text =todo.name
+        binding.dateText.text =todo.doDate.toString()
+    }
+}
+
+private val diffUtilItemCallback = object : DiffUtil.ItemCallback<ToDoItem>() {
+    override fun areContentsTheSame(oldItem: ToDoItem, newItem: ToDoItem): Boolean {
+        return oldItem == newItem
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val toDoItem:ToDoItem?=getItem(position)
-        holder.date.text=DateFormat.format("yyyy/MM/dd HH:mm",toDoItem?.doDate)
-        holder.title.text=toDoItem?.name
+    override fun areItemsTheSame(oldItem: ToDoItem, newItem: ToDoItem): Boolean {
+        return oldItem.id == newItem.id
     }
+}
 
-    override fun getItemId(position:Int):Long{
-        return getItem(position)?.id ?:0
-    }
-
-
+class OnClickListener(val clickListener: (todo: ToDoItem) -> Unit) {
+    fun onClick(todo: ToDoItem) = clickListener(todo)
 }

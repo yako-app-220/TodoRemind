@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment)
         setupWithNavController(binding.bottomNavigation,navController)
-
     }
 
     fun startToDoActivity(id:Long){
