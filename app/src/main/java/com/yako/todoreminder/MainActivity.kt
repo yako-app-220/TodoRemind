@@ -21,8 +21,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun startToDoActivity(id:Long){
-        val intent = Intent(this, ToDoActivity::class.java)
+        val intent = Intent(this, ToDoEditActivity::class.java)
         intent.putExtra("todoId",id)
         this.startActivity(intent)
     }
+
 }

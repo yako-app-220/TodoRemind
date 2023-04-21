@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TodoReminder">
         <activity
-            android:name=".ToDoActivity"
+            android:name=".ToDoEditActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

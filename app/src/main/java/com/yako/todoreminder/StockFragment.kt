@@ -39,12 +39,13 @@ class StockFragment : Fragment() {
         //roomのデータを全て取得
         val todo: List<ToDoItem> = toDoDao.getAll()
 
-        var todoId=-1L
+        var todoId=0L
         //OnClickListenerを引数としてMemoAdapterのインスタンス生成
         val todoAdapter = ToDoAdapter(
             OnClickListener { todo ->
                 //toEditIntent.putExtra("ID",todo.id)
                 todoId=todo.id
+                (activity as? MainActivity)?.startToDoActivity(todoId)
             }
         )
 
@@ -54,7 +55,7 @@ class StockFragment : Fragment() {
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         binding.list.setOnClickListener {
-            (activity as? MainActivity)?.startToDoActivity(todoId)
+            //(activity as? MainActivity)?.startToDoActivity(todoId)
         }
 
         binding.addFab.setOnClickListener {

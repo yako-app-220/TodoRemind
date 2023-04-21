@@ -14,7 +14,6 @@ class ActionFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     private val binding get() = _binding!!
