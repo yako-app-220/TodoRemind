@@ -1,9 +1,13 @@
 package com.yako.todoreminder
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.format.DateFormat
+import android.util.Log
 import android.widget.TextView
 import androidx.core.view.isInvisible
 import androidx.room.Room
@@ -13,6 +17,7 @@ import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
+
 
 class ToDoEditActivity : AppCompatActivity() {
 
@@ -40,12 +45,12 @@ class ToDoEditActivity : AppCompatActivity() {
             binding.deleteButton.isInvisible = true
             binding.saveButton.setOnClickListener {
 
-                todoDao.insert(saveTodo(id))
+                val newId =todoDao.insert(saveTodo(id))
+                setAlarm(newId)
                 startActivity(toMainIntent)
+                Log.i("ToDoEdit",id.toString())
             }
-
         } else {
-
             binding.nameEdit.setText(todo.name)
             binding.whyEdit.setText(todo.why)
             binding.textDoTime.text= changeMyDateText(todo.doDate)
@@ -55,8 +60,10 @@ class ToDoEditActivity : AppCompatActivity() {
             //binding.textDeleteTime.text= DateFormat.format("yyyy/MM/dd HH:mm",todo.deleteDate)
 
             binding.saveButton.setOnClickListener {
+                setAlarm(id)
                 todoDao.update(saveTodo(id))
                 startActivity(toMainIntent)
+                Log.i("ToDoEdit",id.toString())
             }
 
             binding.deleteButton.setOnClickListener {
@@ -64,8 +71,23 @@ class ToDoEditActivity : AppCompatActivity() {
                 startActivity(toMainIntent)
             }
         }
+    }
 
-
+    fun setAlarm(id: Long) {
+        val date = binding.textDoTime.text.toString().toDate()
+        if (date != null){
+            // 実行したいクラスから Intent を作成
+                Log.i("ToDoEdit",id.toString())
+            val alarmIntent = Intent(this, AlarmReceiver::class.java)
+                .putExtra("id", id)
+            val pendingIntent = PendingIntent.getBroadcast(
+                this, id.toInt(), alarmIntent,
+                PendingIntent.FLAG_IMMUTABLE
+            )
+            // AlarmManager で pendingIntent を指定時間後に実行するように設定
+            val manager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, date.time, pendingIntent)
+        }
     }
 
 
@@ -79,8 +101,6 @@ class ToDoEditActivity : AppCompatActivity() {
             deleteDate = binding.textDeleteTime.text.toString().toDate()
         )
     }
-
-
 
     private fun calenderTextInput(targetText:TextView){
         var calenderText=""

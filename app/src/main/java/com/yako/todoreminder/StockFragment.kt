@@ -39,12 +39,12 @@ class StockFragment : Fragment() {
         //roomのデータを全て取得
         val todo: List<ToDoItem> = toDoDao.getAll()
 
-        var todoId=0L
+
         //OnClickListenerを引数としてMemoAdapterのインスタンス生成
         val todoAdapter = ToDoAdapter(
             OnClickListener { todo ->
                 //toEditIntent.putExtra("ID",todo.id)
-                todoId=todo.id
+                val todoId=todo.id
                 (activity as? MainActivity)?.startToDoActivity(todoId)
             }
         )

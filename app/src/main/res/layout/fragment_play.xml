@@ -8,12 +8,87 @@
     tools:context=".PlayFragment"
     tools:ignore="MissingDefaultResource">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <Button
+        android:id="@+id/playButton"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Play"
+        app:layout_constraintStart_toStartOf="@+id/memoEditText"
+        app:layout_constraintTop_toBottomOf="@+id/memoEditText" />
+
+    <Button
+        android:id="@+id/plusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PLUS"
+        app:layout_constraintEnd_toEndOf="@+id/memoEditText"
+        app:layout_constraintStart_toEndOf="@+id/playButton"
+        app:layout_constraintTop_toTopOf="@+id/playButton" />
+
+    <Button
+        android:id="@+id/detailButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="detail"
+        app:layout_constraintEnd_toEndOf="@+id/playButton"
+        app:layout_constraintStart_toStartOf="@+id/playButton"
+        app:layout_constraintTop_toBottomOf="@+id/playButton" />
+
+    <Button
+        android:id="@+id/endButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="end"
+        app:layout_constraintStart_toStartOf="@+id/plusButton"
+        app:layout_constraintTop_toTopOf="@+id/detailButton" />
+
+    <EditText
+        android:id="@+id/todoNameEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/whyEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="@+id/todoNameEdit"
+        app:layout_constraintStart_toStartOf="@+id/todoNameEdit"
+        app:layout_constraintTop_toBottomOf="@+id/todoNameEdit" />
+
+    <EditText
+        android:id="@+id/memoEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="@+id/whyEditText"
+        app:layout_constraintStart_toStartOf="@+id/whyEditText"
+        app:layout_constraintTop_toBottomOf="@+id/whyEditText" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
