@@ -47,12 +47,18 @@ class MainActivity : AppCompatActivity() {
                 longArrayOf(0, 500, 500, 500, 500) // 最初の0は待機時間、次の500はオン時間、次の500はオフ時間、というように繰り返す
             // バイブレーターにバイブレーションパターンを設定する（-1は繰り返ししないことを意味する）
             vibrator.vibrate(vibrationPattern, -1)
-
         }
     }
 
     fun getToDoId():Long{
         return id
+    }
+
+
+    fun startMakerActivity(makerId: Long) {
+        val intent = Intent(this, MakerActivity::class.java)
+        intent.putExtra("makerId", makerId)
+        this.startActivity(intent)
     }
 
     fun startToDoActivity(id: Long) {
@@ -75,5 +81,12 @@ class AlarmReceiver : BroadcastReceiver() {
         //mainActivityIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         //mainActivityIntent.putExtra("Trigger", "Receiver")
         context!!.startActivity(mainActivityIntent)
+    }
+}
+
+class MakerReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context?, intent: Intent?) {
+        val id= intent?.getLongExtra("makerId", -1) ?: -1
+        Log.i("received",id.toString())
     }
 }

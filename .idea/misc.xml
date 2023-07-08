@@ -3,16 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/drawable/line_color.xml" value="0.1355" />
         <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/activity_call.xml" value="0.1" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/activity_childlen.xml" value="0.24791666666666667" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/activity_children_edit.xml" value="0.1734375" />
         <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/activity_main.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/activity_maker.xml" value="0.2390625" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/activity_maker2.xml" value="0.11626139817629179" />
         <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/activity_to_do.xml" value="0.15324214792299898" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/cell_children_list.xml" value="0.286231884057971" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/cell_maker_list.xml" value="0.24791666666666667" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/cell_todo_item.xml" value="0.24791666666666667" />
         <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/fragment_action.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/fragment_children.xml" value="0.33" />
         <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/fragment_control.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/fragment_edit_to_d_o.xml" value="0.25271739130434784" />
         <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/fragment_edit_to_do.xml" value="0.33" />
         <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/fragment_maker.xml" value="0.23541666666666666" />
         <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/fragment_play.xml" value="0.23541666666666666" />
-        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/fragment_stock.xml" value="0.160081053698075" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/fragment_stock.xml" value="0.12" />
+        <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind/app/src/main/res/layout/number_picker_dialog.xml" value="0.2509057971014493" />
         <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind2/app/src/main/res/layout/activity_main.xml" value="0.13903985507246377" />
         <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind2/app/src/main/res/layout/cell_todo_item.xml" value="0.1671875" />
         <entry key="..\:/Users/tauro/AndroidStudioProjects/TodoRemind2/app/src/main/res/layout/cell_todoi_tem_list.xml" value="0.1671875" />

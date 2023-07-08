@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ToDoEditActivity">
+    tools:context=".ChildrenEditActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -101,54 +101,66 @@
 
             <TextView
                 android:id="@+id/textDoDate"
-                android:layout_width="0dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
+                android:background="@drawable/line_color"
                 android:ellipsize="none"
                 android:inputType="textMultiLine|text"
                 android:singleLine="false"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/doTimeSelectButton"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/memoEdit" />
 
-            <Button
-                android:id="@+id/doTimeSelectButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="開始予定時刻"
+            <TextView
+                android:id="@+id/textDoTime"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/line_color"
+                android:ellipsize="none"
+                android:inputType="textMultiLine|text"
+                android:singleLine="false"
+                android:textColor="@color/black"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textDoDate"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textDoDate"
                 app:layout_constraintTop_toTopOf="@+id/textDoDate" />
 
             <TextView
                 android:id="@+id/textLimitDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
+                android:background="@drawable/line_color"
                 android:ellipsize="none"
                 android:inputType="textMultiLine|text"
                 android:singleLine="false"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/limitTimeSelectButton"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textDoDate"
+                app:layout_constraintStart_toStartOf="@+id/textDoDate"
                 app:layout_constraintTop_toBottomOf="@+id/textDoDate" />
 
-            <Button
-                android:id="@+id/limitTimeSelectButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="終了予定時刻"
+            <TextView
+                android:id="@+id/textLimitTime"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/line_color"
+                android:ellipsize="none"
+                android:inputType="textMultiLine|text"
+                android:singleLine="false"
+                android:textColor="@color/black"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textLimitDate"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textLimitDate"
                 app:layout_constraintTop_toTopOf="@+id/textLimitDate" />
 
             <TextView
@@ -157,24 +169,31 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
+                android:background="@drawable/line_color"
                 android:ellipsize="none"
                 android:inputType="textMultiLine|text"
                 android:singleLine="false"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/deleteTimeSelectButton"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintEnd_toEndOf="@+id/textLimitDate"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textLimitDate" />
 
-            <Button
-                android:id="@+id/deleteTimeSelectButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="自動削除時刻"
+            <TextView
+                android:id="@+id/textDeleteTime"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/line_color"
+                android:ellipsize="none"
+                android:inputType="textMultiLine|text"
+                android:singleLine="false"
+                android:textColor="@color/black"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textDeleteDate"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textDeleteDate"
                 app:layout_constraintTop_toTopOf="@+id/textDeleteDate" />
 
             <Button
@@ -195,7 +214,6 @@
                 android:text="削除"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/saveButton" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

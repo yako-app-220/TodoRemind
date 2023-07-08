@@ -2,17 +2,17 @@ package com.yako.todoreminder
 
 import android.content.Context
 import androidx.room.*
+import java.time.LocalTime
 
 @Entity(tableName = "maker")
-data class Maker (
-    @PrimaryKey(autoGenerate = true)val makerId: Long,
+data class Maker(
+    @PrimaryKey(autoGenerate = true) val makerId: Long,
     val type:Long=0,
-    val makerName:String,
-    val power:Long,
-
-    val childName:String,
-    val childWhy:String,
-    val childMemo:String,
+    val makerName:String="",
+    val power: Boolean=true,
+    //val makerTime: LocalTime?=null,
+    val makerWhy:String="",
+    val makerMemo:String="",
     )
 
 //@Entity(tableName = "Factor")
@@ -26,14 +26,14 @@ interface MakerDao {
     @Update fun update(entity: Maker)
     @Delete fun delete(entity: Maker)
     @Query("select * from maker")
-    fun getAll(): List<ToDoItem>
+    fun getAll(): List<Maker>
     @Query("select * from maker where makerId = :makerId")
     fun getMaker(makerId: Long): Maker
 }
 
 @Database(entities = [Maker::class], version = 1)
 @TypeConverters(DateConverters::class)
-abstract class MakerDatabase: RoomDatabase() {
+abstract class MakerDatabase: RoomDatabase(){
     abstract fun makerDao(): MakerDao
     companion object {
         private const val DATABASE_FILE = "Maker.db"

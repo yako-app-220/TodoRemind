@@ -25,8 +25,8 @@ class ToDoEditActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityToDoBinding.inflate(layoutInflater).apply { setContentView(this.root) }
 
+        binding = ActivityToDoBinding.inflate(layoutInflater).apply { setContentView(this.root) }
         val db = Room.databaseBuilder(
             applicationContext,
             ToDoDatabase::class.java, "ToDo.db"
@@ -37,14 +37,12 @@ class ToDoEditActivity : AppCompatActivity() {
         val todo = todoDao.getToDo(id)
         val toMainIntent = Intent(this, MainActivity::class.java)
 
-        binding.doTimeSelectButton.setOnClickListener{calenderTextInput(binding.textDoTime)}
-        binding.limitTimeSelectButton.setOnClickListener{calenderTextInput(binding.textLimitTime)}
-        binding.deleteTimeSelectButton.setOnClickListener{calenderTextInput(binding.textDeleteTime)}
-
+        binding.doTimeSelectButton.setOnClickListener{calenderTextInput(binding.textDoDate)}
+        binding.limitTimeSelectButton.setOnClickListener{calenderTextInput(binding.textLimitDate)}
+        binding.deleteTimeSelectButton.setOnClickListener{calenderTextInput(binding.textDeleteDate)}
         if (id == 0L) {
             binding.deleteButton.isInvisible = true
             binding.saveButton.setOnClickListener {
-
                 val newId =todoDao.insert(saveTodo(id))
                 setAlarm(newId)
                 startActivity(toMainIntent)
@@ -53,9 +51,9 @@ class ToDoEditActivity : AppCompatActivity() {
         } else {
             binding.nameEdit.setText(todo.name)
             binding.whyEdit.setText(todo.why)
-            binding.textDoTime.text= changeMyDateText(todo.doDate)
-            binding.textLimitTime.text=changeMyDateText(todo.limitDate)
-            binding.textDeleteTime.text= changeMyDateText(todo.deleteDate)
+            binding.textDoDate.text= changeMyDateText(todo.doDate)
+            binding.textLimitDate.text=changeMyDateText(todo.limitDate)
+            binding.textDeleteDate.text= changeMyDateText(todo.deleteDate)
             //binding.textLimitTime.text= DateFormat.format("yyyy/MM/dd HH:mm",todo.limitDate)
             //binding.textDeleteTime.text= DateFormat.format("yyyy/MM/dd HH:mm",todo.deleteDate)
 
@@ -74,7 +72,7 @@ class ToDoEditActivity : AppCompatActivity() {
     }
 
     fun setAlarm(id: Long) {
-        val date = binding.textDoTime.text.toString().toDate()
+        val date = binding.textDoDate.text.toString().toDate()
         if (date != null){
             // 実行したいクラスから Intent を作成
                 Log.i("ToDoEdit",id.toString())
@@ -84,21 +82,21 @@ class ToDoEditActivity : AppCompatActivity() {
                 this, id.toInt(), alarmIntent,
                 PendingIntent.FLAG_IMMUTABLE
             )
+
             // AlarmManager で pendingIntent を指定時間後に実行するように設定
             val manager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
             manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, date.time, pendingIntent)
         }
     }
 
-
     private fun saveTodo(id: Long): ToDoItem {
         return ToDoItem(
             id,
             name = binding.nameEdit.text.toString(),
             why = binding.whyEdit.text.toString(),
-            doDate = binding.textDoTime.text.toString().toDate(),
-            limitDate = binding.textLimitTime.text.toString().toDate(),
-            deleteDate = binding.textDeleteTime.text.toString().toDate()
+            doDate = binding.textDoDate.text.toString().toDate(),
+            limitDate = binding.textLimitDate.text.toString().toDate(),
+            deleteDate = binding.textDeleteDate.text.toString().toDate()
         )
     }
 
@@ -120,7 +118,6 @@ class ToDoEditActivity : AppCompatActivity() {
                 calenderText = date
             }
         }.show(supportFragmentManager,"date_dialog")
-
     }
 
     private fun changeMyDateText(date: Date?): String{
@@ -129,9 +126,6 @@ class ToDoEditActivity : AppCompatActivity() {
         }else{
             return "なし"
         }
-        //var temp="なし"
-        //temp= date?.let {  } as String
-        //return temp
     }
 
     private fun String.toDate(patten:String="yyyy/MM/dd HH:mm"): Date?{
